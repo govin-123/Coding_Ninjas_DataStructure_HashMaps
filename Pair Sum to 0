@@ -1,0 +1,52 @@
+/* Given a random integer array A of size N.
+Find and print the count of pair of elements in the array which sum up to 0.
+Note: Array A can contain duplicate elements as well.
+Time Complexity is O(n).
+*/
+
+package Hashmaps;
+import java.util.HashMap;
+
+public class pairSum {
+
+	private static int pairSum1(int[] input,int size) {
+		
+        HashMap<Integer,Integer> map=new HashMap<>();
+        int finalcount=0;
+        for(int i=0;i<size;i++)
+        {
+        	map.put(input[i],map.getOrDefault(input[i],0)+1);        	
+        }
+        
+        for(int i =0;i<size;i++) {
+        	if(map.containsKey(-input[i]) && map.get(input[i])!=0) {
+        		int times;
+        		if(input[i]==(-input[i])) {
+        			int occur=map.get(input[i]);
+        			times=(occur*(occur-1))/2;
+        			finalcount += times;
+        			map.put(input[i],0);
+        		}
+        		
+        		times=map.get(input[i])*map.get(-input[i]);
+        		finalcount += times;
+        		map.put(input[i],0);
+        		map.put(-input[i],0);
+        	}
+        }
+        return finalcount;
+        	
+        
+	};
+  
+  
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] arr= {0,0,0,0,0};
+		int result=pairSum1(arr,5);
+		System.out.println(result);
+		
+
+	}
+
+}
