@@ -23,24 +23,15 @@ public class inbultHashmap {
 	private static void printIntersection(int[] arr1,int[] arr2) {
 	HashMap<Integer, Integer> map = new HashMap<>();
 	for(int i=0;i<arr1.length;i++) {
-		if(map.containsKey(arr1[i])) {
-			int value = map.get(arr1[i]);
-			map.put(arr1[i], value+1);//Getting Frequency of present element		
+		map.put(arr1[i],map.getOrDefault(arr1[i],0)+1);
 		}
-		else {
-			map.put(arr1[i], 1); //for 1st occurence of item the value is 1
-		}
-	}
 	Arrays.sort(arr2);
 	//now that map is ready for arr1
 	for(int i=0;i<arr2.length;i++) {
-		if(map.containsKey(arr2[i])) {
-			int frequnecy = map.get(arr2[i]);
-			if(frequnecy>0) {
-				System.out.print(arr2[i]+" ");
-				map.put(arr2[i], frequnecy-1);
-			}
-		}
+		if(map.containsKey(arr2[i]) && map.get(arr2[i]) > 0){
+			System.out.print(arr2[i]+" ");
+			map.put(arr2[i], map.get(arr2[i])-1);
+		}			
 	}
 
 }
