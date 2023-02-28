@@ -25,9 +25,9 @@ public class inbultHashmap {
 	for(int i=0;i<arr1.length;i++) {
 		if(map.containsKey(arr1[i])) {
 			int value = map.get(arr1[i]);
-			map.put(arr1[i], value+1);
-			
-		}else {
+			map.put(arr1[i], value+1);//Getting Frequency of present element		
+		}
+		else {
 			map.put(arr1[i], 1); //for 1st occurence of item the value is 1
 		}
 	}
@@ -37,7 +37,7 @@ public class inbultHashmap {
 		if(map.containsKey(arr2[i])) {
 			int frequnecy = map.get(arr2[i]);
 			if(frequnecy>0) {
-				System.out.println(arr2[i]);
+				System.out.print(arr2[i]+" ");
 				map.put(arr2[i], frequnecy-1);
 			}
 		}
@@ -49,8 +49,6 @@ public class inbultHashmap {
 		int arr1[] = {1,4,5,2,2,3,6,5,3,2};
 		int arr2[] = {2,3,2,6,6,5,1};
 		printIntersection(arr1,arr2);
-			
-
 	}
 
 }
